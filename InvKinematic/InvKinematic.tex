@@ -1,0 +1,80 @@
+% UR5_Inverse_Kinematics
+R_3^6 = (R_0^3)^\top R.
+\end{equation}
+Because the wrist axes intersect, $R_3^6$ depends only on $\theta_4,\theta_5,\theta_6$ and is a rotation that can be parameterized by those three angles.
+
+
+\section{Solving for $\theta_4,\theta_5,\theta_6$}
+Write the rotation $R_3^6$ in the usual matrix form:
+\begin{equation}
+R_3^6 = \begin{bmatrix} r_{11} & r_{12} & r_{13} \\
+r_{21} & r_{22} & r_{23} \\
+r_{31} & r_{32} & r_{33} \end{bmatrix}.
+\end{equation}
+Using a Z--Y--X (or other consistent) parameterization for the wrist joints, a common extraction for revolute wrist angles is
+\begin{align}
+\theta_5 &= \operatorname{atan2}\bigl(\sqrt{r_{13}^2 + r_{23}^2},\; r_{33}\bigr), \\
+\theta_4 &= \operatorname{atan2}(r_{23}, r_{13}), \\
+\theta_6 &= \operatorname{atan2}(r_{32}, -r_{31}).
+\end{align}
+
+
+These formulas assume a particular ordering and sign convention of the wrist rotations; confirm with your DH joint axis definitions. When $\theta_5=0$ (wrist singularity) the rotation around axis 4 and axis 6 become coupled; handle separately by setting one to zero and solving for the other from the combined rotation.
+
+
+\section{Assembling all solutions and handling multiplicity}
+Combine the possible choices for $\theta_1$ (up to 2), $\theta_3$ (2 choices), and the corresponding $\theta_2$ to enumerate up to 4 shoulder/elbow configurations. Each such configuration yields a unique $R_3^6$ and therefore up to 2 wrist configurations (depending on $\theta_5$ sign), giving up to 8 IK solutions in total for a generic non-singular pose.
+
+
+After computing candidate solutions, always:
+\begin{enumerate}
+\item Clamp angles into the robot's joint limits and discard infeasible solutions.
+\item Compute forward kinematics for each candidate and measure the pose error (position and orientation) against the desired $T_0^6$; keep only solutions within tolerance.
+\item Prefer solutions that minimize joint motion from the current robot posture or that minimize a cost function (joint limits, collisions, singularity margins).
+\end{enumerate}
+
+
+\section{Numerical tips and robustness}
+\begin{itemize}
+\item Clamp values used inside $\arccos$ to $[-1,1]$ to avoid NaNs from floating point errors.
+\item Use \texttt{atan2(y,x)} (not \texttt{atan(y/x)}) to get correct quadrants.
+\item When comparing matrices for equality use a small tolerance (e.g. $10^{-6}$) rather than exact equality.
+\item Detect wrist singularities when $|\sin\theta_5|$ is very small (or when $\sqrt{r_{13}^2+r_{23}^2}\approx 0$) and use a specialized routine.
+\end{itemize}
+
+
+\section{Worked symbolic example (summary)}
+Summarize the computation flow you will implement in code or symbolic algebra:
+\begin{enumerate}
+\item Given $T_0^6 = [R,\mathbf{p}]$ and robot DH constants $a_i,\alpha_i,d_i$.
+\item Compute $\mathbf{p}_{wc} = \mathbf{p} - d_6 R \hat{z}$.
+\item Solve $\theta_1$ from eq.~\eqref{eq:theta1} (two candidates possible).
+\item For each $\theta_1$ candidate: compute $r,s,D$ and solve $\theta_3$ from eq.~\eqref{eq:cos3} (two candidates), then $\theta_2$ from eq.~\eqref{eq:theta2}.
+\item For each triple $(\theta_1,\theta_2,\theta_3)$ compute $R_0^3$ and then $R_3^6 = (R_0^3)^\top R$.
+\item Extract $\theta_4,\theta_5,\theta_6$ from $R_3^6$ (watch singular cases).
+\item Validate each solution with forward kinematics and apply joint limits.
+\end{enumerate}
+
+
+\section{Conclusion}
+This document provided a full derivation and algorithmic steps for closed-form inverse kinematics of a 6R robot with spherical wrist, suitable for the UR5. To get numerical solutions, substitute the UR5 DH constants into the symbolic formulas (or use your chosen DH convention), then implement the listed steps in your favorite language (Python/NumPy, MATLAB, C++, etc.).
+
+
+\section*{Appendix: Example UR5 DH parameters (check convention)}
+% NOTE: DH values depend on convention (standard vs modified) and on the frame choices.
+% The following table is illustrative. Please verify with your UR5 reference if you want to run numbers.
+\begin{align*}
+% a_i, alpha_i, d_i
+(a_1,\;\alpha_1,\;d_1) &= (0,\; +\tfrac{\pi}{2},\; d_1) \\
+(a_2,\;\alpha_2,\;d_2) &= (a_2,\; 0,\; 0) \\
+(a_3,\;\alpha_3,\;d_3) &= (a_3,\; 0,\; 0) \\
+(a_4,\;\alpha_4,\;d_4) &= (0,\; +\tfrac{\pi}{2},\; d_4) \\
+(a_5,\;\alpha_5,\;d_5) &= (0,\; -\tfrac{\pi}{2},\; d_5) \\
+(a_6,\;\alpha_6,\;d_6) &= (0,\; 0,\; d_6)
+\end{align*}
+
+
+% If you want a numeric example filled in, replace the symbolic constants above with the UR5 numeric values (from the UR documentation or a trusted source) and run through the algorithm.
+
+
+\end{document}
