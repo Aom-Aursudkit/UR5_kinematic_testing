@@ -107,12 +107,14 @@ kin.P = np.column_stack([0.1625*ez, zv, -0.425*ex, -0.3922*ex, -0.1333*ey-0.0997
 kin.joint_type = np.zeros(6)
 
 # ====== INPUT TARGET ======
-p_target = np.array([0.3, 0.0, 0.2])
+p_target_temp = np.array([0.3, 0.0, 0.2])
 R_target = np.array([[0,1,0],
                      [1,0,0],
                      [0,0,-1]])
 
 # ====== Compute IK ======
+tool_offset = np.array([0.0, 0.0, 0.05])
+p_target = p_target_temp + tool_offset
 Q_solutions, is_LS_vec = IK_UR(R_target, p_target, kin)
 print("Number of IK solutions found:", Q_solutions.shape[1])
 

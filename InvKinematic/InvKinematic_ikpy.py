@@ -26,7 +26,7 @@ target_R = np.array([[1, 0, 0],
                      [0, 0, 1]]) # <---- rotation
 
 tool_offset = np.array([0.0, 0.0, 0.05])
-target_position = target_position_temp - tool_offset
+target_position = target_position_temp + tool_offset
 target_frame = np.eye(4)
 target_frame[:3, :3] = target_R
 target_frame[:3, 3] = target_position

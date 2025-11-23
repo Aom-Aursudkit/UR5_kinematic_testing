@@ -1,12 +1,3 @@
-# Python code to produce both a symbolic (SymPy) step-by-step derivation for key IK equations
-# and a numeric UR5 inverse kinematics solver that returns up to 8 solutions and validates them.
-# This will run in the notebook and display results.
-# Note: This uses a common UR5 DH parameter set (verify against your robot's convention).
-# We'll:
-# 1. Use sympy to show symbolic expressions for wrist center and cos(theta3).
-# 2. Implement a numeric IK solver (numpy) that enumerates solutions and checks FK error.
-# 3. Run a test target pose and show solutions with pose error.
-
 import numpy as np
 import sympy as sp
 from math import atan2, acos, sqrt, pi
