@@ -108,7 +108,9 @@ kin.joint_type = np.zeros(6)
 
 # ====== INPUT TARGET ======
 p_target = np.array([0.3, 0.0, 0.2])
-R_target = np.array([[0,1,0],[1,0,0],[0,0,-1]])
+R_target = np.array([[0,1,0],
+                     [1,0,0],
+                     [0,0,-1]])
 
 # ====== Compute IK ======
 Q_solutions, is_LS_vec = IK_UR(R_target, p_target, kin)
@@ -119,8 +121,13 @@ for i in range(Q_solutions.shape[1]):
     q_sol = Q_solutions[:,i]
     R_check, p_check = fwdkin(kin, q_sol)
     print(f"\nSolution {i+1}:")
-    print("Joint angles (rad):", q_sol)
-    print("FK position:", p_check)
-    print("FK rotation:\n", R_check)
-    print("Position error:", p_check - p_target)
-    print("Rotation error:\n", R_check - R_target)
+    print("joint angles (radians):", q_sol)
+    print("FK reached translation:", p_check)
+    print("FK reached rotation:\n", R_check)
+    # print("translation error:", p_check - p_target)
+    # print("rotation error:\n", R_check - R_target)
+    
+
+R_check, p_check = fwdkin(kin, [ 0.54751767 , 1.0595238 , -1.96500339 ,-0.66531673 , 1.57079633 ,-0.54751767])
+print("FK position:", p_check)
+print("FK rotation:\n", R_check)

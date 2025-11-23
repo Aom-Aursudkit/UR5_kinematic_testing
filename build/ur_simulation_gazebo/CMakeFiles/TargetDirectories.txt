@@ -1,0 +1,9 @@
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/uninstall.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/ur_simulation_gazebo_uninstall.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/test.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/edit_cache.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/rebuild_cache.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/list_install_components.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/install.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/install/local.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo/CMakeFiles/install/strip.dir

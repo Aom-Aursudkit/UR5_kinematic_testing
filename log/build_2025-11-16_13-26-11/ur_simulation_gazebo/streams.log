@@ -1,0 +1,53 @@
+[0.005s] Invoking command in '/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo': AMENT_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:/opt/ros/humble /usr/bin/cmake /home/aom/Documents/GitHub/UR5_kinematic_testing/src/Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo -DCMAKE_INSTALL_PREFIX=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo
+[0.064s] -- The C compiler identification is GNU 11.4.0
+[0.117s] -- The CXX compiler identification is GNU 11.4.0
+[0.122s] -- Detecting C compiler ABI info
+[0.196s] -- Detecting C compiler ABI info - done
+[0.201s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.201s] -- Detecting C compile features
+[0.201s] -- Detecting C compile features - done
+[0.203s] -- Detecting CXX compiler ABI info
+[0.291s] -- Detecting CXX compiler ABI info - done
+[0.297s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.297s] -- Detecting CXX compile features
+[0.298s] -- Detecting CXX compile features - done
+[0.300s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.440s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.494s] -- Found launch_testing_ament_cmake: 1.0.8 (/opt/ros/humble/share/launch_testing_ament_cmake/cmake)
+[0.496s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[0.525s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[0.533s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[0.533s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.533s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[0.533s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[0.551s] -- Found PythonExtra: .so  
+[0.552s] -- Found ament_cmake_pytest: 1.3.11 (/opt/ros/humble/share/ament_cmake_pytest/cmake)
+[0.592s] -- Configuring done
+[0.593s] -- Generating done
+[0.594s] -- Build files have been written to: /home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo
+[0.599s] Invoked command in '/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo' returned '0': AMENT_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:/opt/ros/humble /usr/bin/cmake /home/aom/Documents/GitHub/UR5_kinematic_testing/src/Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo -DCMAKE_INSTALL_PREFIX=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo
+[0.600s] Invoking command in '/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo': AMENT_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:/opt/ros/humble /usr/bin/cmake --build /home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo -- -j20 -l20
+[0.621s] Invoked command in '/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo' returned '0': AMENT_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:/opt/ros/humble /usr/bin/cmake --build /home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo -- -j20 -l20
+[0.622s] Invoking command in '/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo': AMENT_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:/opt/ros/humble /usr/bin/cmake --install /home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo
+[0.627s] -- Install configuration: ""
+[0.627s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/config
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/config/ur_controllers.yaml
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/launch
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/launch/ur_sim_moveit.launch.py
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/launch/ur_sim_control.launch.py
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ament_index/resource_index/package_run_dependencies/ur_simulation_gazebo
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ament_index/resource_index/parent_prefix_path/ur_simulation_gazebo
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/environment/ament_prefix_path.sh
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/environment/ament_prefix_path.dsv
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/environment/path.sh
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/environment/path.dsv
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/local_setup.bash
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/local_setup.sh
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/local_setup.zsh
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/local_setup.dsv
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/package.dsv
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ament_index/resource_index/packages/ur_simulation_gazebo
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/cmake/ur_simulation_gazeboConfig.cmake
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/cmake/ur_simulation_gazeboConfig-version.cmake
+[0.628s] -- Installing: /home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_simulation_gazebo/share/ur_simulation_gazebo/package.xml
+[0.630s] Invoked command in '/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo' returned '0': AMENT_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aom/Documents/GitHub/UR5_kinematic_testing/install/ur_description:/opt/ros/humble /usr/bin/cmake --install /home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_simulation_gazebo

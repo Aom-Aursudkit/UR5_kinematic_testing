@@ -1,0 +1,9 @@
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/uninstall.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/ur_description_uninstall.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/test.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/edit_cache.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/rebuild_cache.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/list_install_components.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/install.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/install/local.dir
+/home/aom/Documents/GitHub/UR5_kinematic_testing/build/ur_description/CMakeFiles/install/strip.dir
