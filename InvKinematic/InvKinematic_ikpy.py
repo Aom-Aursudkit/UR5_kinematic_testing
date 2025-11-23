@@ -4,7 +4,8 @@ import numpy as np
 # ----------------------------
 # Load UR5e
 # ----------------------------
-urdf_path = "/home/aom/Documents/GitHub/UR5_kinematic_testing/src/Universal_Robots_ROS2_Description/urdf/ur5e.urdf"
+# urdf_path = "/home/aom/Documents/GitHub/UR5_kinematic_testing/src/Universal_Robots_ROS2_Description/urdf/ur5e.urdf"
+urdf_path = "/home/aom/Documents/GitHub/UR5_kinematic_testing/InvKinematic/urdf/ur5e.urdf"
 robot_chain = Chain.from_urdf_file(urdf_path)
 
 # ----------------------------
