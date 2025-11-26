@@ -1,12 +1,15 @@
 import numpy as np
 from ikpy.chain import Chain
+import pinocchio as pin
+from pinocchio.robot_wrapper import RobotWrapper
 
 class UR5eIK:
     def __init__(self, urdf_path, tool_offset=np.array([0.0, 0.0, 0.05])):
         self.urdf_path = urdf_path
         self.tool_offset = tool_offset
+        
+        # ============ IKPY for IK ============
         self.robot_chain = Chain.from_urdf_file(urdf_path)
-
         # -----------------------------------------
         # Mark only revolute joints active
         # -----------------------------------------
@@ -15,6 +18,15 @@ class UR5eIK:
                 self.robot_chain.active_links_mask[i] = True
             else:
                 self.robot_chain.active_links_mask[i] = False
+                
+        # ============ PINOCCHIO for JACOBIAN/FK ============
+        self.robot = RobotWrapper.BuildFromURDF(urdf_path, package_dirs=["."])
+        self.model = self.robot.model
+        self.data = self.robot.data
+
+        # End-effector frame name
+        self.ee_frame_name = "tool0"
+        self.ee_id = self.model.getFrameId(self.ee_frame_name)
 
     def solve_ik(self, position, rotation=np.eye(3), initial_guess=None):
         # Apply tool offset
@@ -42,10 +54,47 @@ class UR5eIK:
         )
 
         return joint_angles[2:8]
+    
+    def jacobian(self, q):
+        pin.forwardKinematics(self.model, self.data, q)
+        pin.computeJointJacobians(self.model, self.data)
+        pin.updateFramePlacements(self.model, self.data)
+
+        J = pin.getFrameJacobian(self.model, self.data, self.ee_id, pin.ReferenceFrame.LOCAL)
+        return J
+
+    def solve_joint_velocities(self, joint_angles, ee_velocity):
+        J = self.jacobian(joint_angles)
+        J_pos = J[:3, :]              # position part only
+        qdot = np.linalg.pinv(J_pos) @ ee_velocity
+        return qdot
+
+    def solve_joint_accelerations(self, joint_angles, joint_velocities, ee_acc, dt=1e-3):
+        J = self.jacobian(joint_angles)
+
+        # numerical Jdot
+        q_next = joint_angles + joint_velocities * dt
+        J_next = self.jacobian(q_next)
+        Jdot = (J_next - J) / dt
+
+        J_pos = J[:3, :]
+        Jdot_pos = Jdot[:3, :]
+
+        qddot = np.linalg.pinv(J_pos) @ (ee_acc - Jdot_pos @ joint_velocities)
+        return qddot
 
     def solve_fk(self, full_joint_vector):
         fk = self.robot_chain.forward_kinematics(full_joint_vector)
         return fk[:3, 3], fk[:3, :3]
+    
+    # def solve_fk(self, q):
+    #     pin.forwardKinematics(self.model, self.data, q)
+    #     pin.updateFramePlacements(self.model, self.data)
+
+    #     T = self.data.oMf[self.ee_id]
+    #     pos = T.translation
+    #     rot = T.rotation
+    #     return pos, rot
 
     def debug_links(self):
         print("\n=== LINK LIST ===")
@@ -64,9 +113,15 @@ if __name__ == "__main__":
     target_rot = np.eye(3)
 
     joint_angles = ik.solve_ik(target_pos, target_rot)
+    print("\nIK joint angles:", joint_angles)
 
-    print("\nIK joint angles:")
-    print(joint_angles)
+    ee_vel = np.array([0.1, 0.0, 0.0])
+    qdot = ik.solve_joint_velocities(joint_angles, ee_vel)
+    print("Joint velocities:", qdot)
+
+    ee_acc = np.array([0.2, 0.0, 0.0])
+    qddot = ik.solve_joint_accelerations(joint_angles, qdot, ee_acc)
+    print("Joint accelerations:", qddot)
 
     full_joint = np.zeros(9)
     full_joint[2:8] = joint_angles
