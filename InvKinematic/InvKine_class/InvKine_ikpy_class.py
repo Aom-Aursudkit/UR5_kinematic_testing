@@ -4,7 +4,7 @@ import pinocchio as pin
 from pinocchio.robot_wrapper import RobotWrapper
 
 class UR5eIK:
-    def __init__(self, urdf_path, tool_offset=np.array([0.0, 0.0, 0.05])):
+    def __init__(self, urdf_path, tool_offset=np.array([0.0, 0.0, 0.059])):
         self.urdf_path = urdf_path
         self.tool_offset = tool_offset
         
@@ -20,9 +20,10 @@ class UR5eIK:
                 self.robot_chain.active_links_mask[i] = False
                 
         # ============ PINOCCHIO for JACOBIAN/FK ============
-        self.robot = RobotWrapper.BuildFromURDF(urdf_path, package_dirs=["."])
-        self.model = self.robot.model
-        self.data = self.robot.data
+        self.model = pin.buildModelFromUrdf(urdf_path)
+        # self.model = self.robot.model
+        # self.data = self.robot.data
+        self.data = self.model.createData()
 
         # End-effector frame name
         self.ee_frame_name = "tool0"

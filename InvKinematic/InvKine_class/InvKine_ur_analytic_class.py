@@ -78,7 +78,8 @@ if __name__ == "__main__":
     urdf_path = "/home/aom/Documents/GitHub/UR5_kinematic_testing/InvKinematic/urdf/ur5e.urdf"
     
     # Input pos+ rot
-    p = np.array([0.3, 0.0, 0.2])
+    # p = np.array([0.3, 0.0, 0.2])
+    p = np.array([0.0670, 0.0620, .0100])
     R = np.array([
         [0, 1, 0],
         [1, 0, 0],
