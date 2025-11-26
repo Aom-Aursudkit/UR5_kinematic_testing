@@ -1,0 +1,7 @@
+import pandas as pd
+
+#t,x,y,z,v,accel
+
+df = pd.read_csv("InvKinematic/trajectory_fixed_samplingtime_50Hz.csv")
+arr = df.to_numpy()
+print(arr)
